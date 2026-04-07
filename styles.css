@@ -1,84 +1,31 @@
-/* ------------------ HEADINGS ------------------ */
+/* Headings */
 h1 {
   text-align: left;
-  font-family: "Times New Roman", serif;
-  font-style: normal; /* valid value */
-  font-size: 4vw; /* scales with viewport width */
+  font-family: "Times New Roman";
+  font-style: normal; /* changed from 'regular' to valid value */
+  font-size: 55px;
   text-decoration: underline;
-  margin: 0.5em 0;
 }
 
-/* ------------------ PARAGRAPHS ------------------ */
+/* Paragraphs */
 p {
-  font-family: "Times New Roman", serif;
-  font-size: 3vw; /* scales for mobile */
-  margin: 0.3em 0;
+  font-family: "Times New Roman";
+  font-size: 16px; /* you can adjust as needed */
 }
 
-/* ------------------ BODY ------------------ */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: rgb(255, 194, 240);
-  color: black;
-  transition: background 0.6s ease, color 0.6s ease;
-  overflow-x: hidden;
-}
-
-/* Dark Mode */
-.dark-mode {
-  background: black;
-  color: rgb(255, 194, 240);
-}
-
-/* ------------------ MAIN WRAPPER ------------------ */
-.wrapper {
-  display: flex;
-  flex-direction: column; /* mobile: stack everything */
-  align-items: center;
-  justify-content: center;
-  padding: 1em;
-  gap: 2em; /* spacing between sections */
-}
-
-/* ------------------ TEXT SECTION ------------------ */
-.text-section {
-  max-width: 90vw;
-  text-align: center; /* mobile: center text */
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 2;
-}
-
-h1 {
-  font-family: "Times New Roman", serif;
-  font-style: normal;
-  font-size: 6vw; /* scales on mobile */
-  text-decoration: underline;
-  margin: 0.3em 0;
-}
-
-p {
-  font-family: "Times New Roman", serif;
-  font-size: 4vw; /* scales on mobile */
-  margin: 0.2em 0;
-}
-
-/* ------------------ CENTER HEDGEHOG SQUARE ------------------ */
+/* Center Square */
 .square {
-  width: 35vw;
-  max-width: 200px;
-  height: 35vw;
-  max-height: 200px;
-  position: relative;
+  width: 170px;
+  height: 170px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3;
+  overflow: hidden; /* keep images inside */
 }
 
-/* Hedgehog images */
+/* Images inside square */
 .square img {
   width: 100%;
   height: 100%;
@@ -105,80 +52,74 @@ p {
   opacity: 1;
 }
 
-/* ------------------ IMAGE SECTION ------------------ */
-.image-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-  max-width: 90vw;
-  text-align: center;
-  opacity: 0; /* hidden initially */
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 1;
+/* Hover effect */
+.square img:hover {
+  transform: scale(1.05);
 }
 
+/* Body */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: rgb(255, 194, 240);
+  color: black;
+  transition: background 0.6s ease, color 0.6s ease;
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+
+/* Dark Mode */
+.dark-mode {
+  background: black;
+  color: rgb(255, 194, 240);
+}
+
+/* Text Section */
+.text-section {
+  position: absolute;
+  top: 50px;
+  left: 25%;
+  transform: translateX(-50%);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 2; /* ensures text stays above images */
+}
+
+/* Image Section */
+.image-section {
+  position: absolute;
+  top: 50px;
+  left: 75%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 20px;
+  opacity: 0; /* hidden initially */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 1; /* behind text */
+  overflow: visible; /* prevent clipping */
+}
+
+/* Stagger images */
 .image-section img:nth-child(odd) {
-  transform: translateY(-10px);
+  transform: translateY(-20px);
 }
 .image-section img:nth-child(even) {
-  transform: translateY(10px);
+  transform: translateY(20px);
 }
 .image-section img {
-  width: 100%;
-  height: auto;
+  width: 200px;
   transition: transform 0.3s ease;
-  border-radius: 8px;
 }
 .image-section img:hover {
   transform: scale(1.05);
 }
 
-/* ------------------ SHOW/HIDDEN CLASSES ------------------ */
+/* Hidden / Show Animations */
 .hidden {
   opacity: 0;
-  transform: translateX(-50%);
+  transform: translateX(-70%);
 }
 .show {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(-50%);
 }
 
-/* ------------------ DESKTOP LAYOUT ------------------ */
-@media (min-width: 768px) {
-  .wrapper {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2em;
-  }
-
-  /* Text always left of square */
-  .text-section {
-    max-width: 25%;
-    text-align: left;
-    order: 1; /* always first */
-  }
-
-  /* Hedgehog square in the middle */
-  .square {
-    width: 170px;
-    height: 170px;
-    order: 2;
-  }
-
-  /* Images appear right of square */
-  .image-section {
-    grid-template-columns: repeat(2, 200px);
-    gap: 20px;
-    max-width: 45%;
-    text-align: left;
-    order: 3;
-  }
-
-  h1 {
-    font-size: 55px;
-  }
-  p {
-    font-size: 16px;
-  }
-}
