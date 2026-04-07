@@ -22,7 +22,7 @@ body {
   background: rgb(255, 194, 240);
   color: black;
   transition: background 0.6s ease, color 0.6s ease;
-  overflow-x: hidden; /* prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 /* Dark Mode */
@@ -31,25 +31,24 @@ body {
   color: rgb(255, 194, 240);
 }
 
-/* ------------------ CONTAINER FOR TEXT + IMAGES ------------------ */
-.main-container {
+/* ------------------ MAIN WRAPPER ------------------ */
+.wrapper {
   display: flex;
-  flex-direction: column; /* default: stack on mobile */
+  flex-direction: column; /* mobile: stack everything */
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 1em;
+  gap: 2em; /* spacing between sections */
 }
 
 /* ------------------ TEXT SECTION ------------------ */
 .text-section {
   max-width: 90vw;
-  margin-bottom: 2em;
-  text-align: center; /* center on mobile */
+  text-align: center; /* mobile: center text */
   transition: opacity 0.6s ease, transform 0.6s ease;
   z-index: 2;
 }
 
-/* Headings and paragraphs */
 h1 {
   font-family: "Times New Roman", serif;
   font-style: normal;
@@ -64,46 +63,13 @@ p {
   margin: 0.2em 0;
 }
 
-/* ------------------ IMAGE SECTION ------------------ */
-.image-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-  max-width: 90vw;
-  margin-bottom: 2em;
-  text-align: center; /* images centered on mobile */
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 1;
-}
-
-/* Stagger images */
-.image-section img:nth-child(odd) {
-  transform: translateY(-10px);
-}
-.image-section img:nth-child(even) {
-  transform: translateY(10px);
-}
-.image-section img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-  border-radius: 8px;
-}
-.image-section img:hover {
-  transform: scale(1.05);
-}
-
-/* ------------------ CENTER SQUARE (BUTTON) ------------------ */
+/* ------------------ CENTER HEDGEHOG SQUARE ------------------ */
 .square {
   width: 35vw;
   max-width: 200px;
   height: 35vw;
   max-height: 200px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   cursor: pointer;
   overflow: hidden;
   display: flex;
@@ -112,7 +78,7 @@ p {
   z-index: 3;
 }
 
-/* Images inside square */
+/* Hedgehog images */
 .square img {
   width: 100%;
   height: 100%;
@@ -139,7 +105,35 @@ p {
   opacity: 1;
 }
 
-/* ------------------ HIDDEN / SHOW ANIMATIONS ------------------ */
+/* ------------------ IMAGE SECTION ------------------ */
+.image-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  max-width: 90vw;
+  text-align: center;
+  opacity: 0; /* hidden initially */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 1;
+}
+
+.image-section img:nth-child(odd) {
+  transform: translateY(-10px);
+}
+.image-section img:nth-child(even) {
+  transform: translateY(10px);
+}
+.image-section img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+.image-section img:hover {
+  transform: scale(1.05);
+}
+
+/* ------------------ SHOW/HIDDEN CLASSES ------------------ */
 .hidden {
   opacity: 0;
   transform: translateX(-50%);
@@ -151,37 +145,40 @@ p {
 
 /* ------------------ DESKTOP LAYOUT ------------------ */
 @media (min-width: 768px) {
-  /* Container becomes horizontal */
-  .main-container {
+  .wrapper {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between;
-    max-width: 95%;
-    margin: 0 auto;
+    justify-content: center;
+    gap: 2em;
   }
 
-  /* Text on left */
+  /* Text always left of square */
   .text-section {
+    max-width: 25%;
     text-align: left;
-    max-width: 45%;
-    margin-bottom: 0;
+    order: 1; /* always first */
   }
 
-  /* Images on right */
+  /* Hedgehog square in the middle */
+  .square {
+    width: 170px;
+    height: 170px;
+    order: 2;
+  }
+
+  /* Images appear right of square */
   .image-section {
     grid-template-columns: repeat(2, 200px);
     gap: 20px;
     max-width: 45%;
     text-align: left;
+    order: 3;
   }
 
-  /* Headings and paragraphs fixed size */
-  h1 { font-size: 55px; }
-  p { font-size: 16px; }
-
-  /* Square button size fixed */
-  .square {
-    width: 170px;
-    height: 170px;
+  h1 {
+    font-size: 55px;
+  }
+  p {
+    font-size: 16px;
   }
 }
