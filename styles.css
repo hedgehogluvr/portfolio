@@ -31,10 +31,73 @@ body {
   color: rgb(255, 194, 240);
 }
 
-/* ------------------ CENTER SQUARE (BUTTON/IMAGE) ------------------ */
+/* ------------------ CONTAINER FOR TEXT + IMAGES ------------------ */
+.main-container {
+  display: flex;
+  flex-direction: column; /* default: stack on mobile */
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1em;
+}
+
+/* ------------------ TEXT SECTION ------------------ */
+.text-section {
+  max-width: 90vw;
+  margin-bottom: 2em;
+  text-align: center; /* center on mobile */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 2;
+}
+
+/* Headings and paragraphs */
+h1 {
+  font-family: "Times New Roman", serif;
+  font-style: normal;
+  font-size: 6vw; /* scales on mobile */
+  text-decoration: underline;
+  margin: 0.3em 0;
+}
+
+p {
+  font-family: "Times New Roman", serif;
+  font-size: 4vw; /* scales on mobile */
+  margin: 0.2em 0;
+}
+
+/* ------------------ IMAGE SECTION ------------------ */
+.image-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  max-width: 90vw;
+  margin-bottom: 2em;
+  text-align: center; /* images centered on mobile */
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 1;
+}
+
+/* Stagger images */
+.image-section img:nth-child(odd) {
+  transform: translateY(-10px);
+}
+.image-section img:nth-child(even) {
+  transform: translateY(10px);
+}
+.image-section img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+.image-section img:hover {
+  transform: scale(1.05);
+}
+
+/* ------------------ CENTER SQUARE (BUTTON) ------------------ */
 .square {
-  width: 35vw;       /* scales on screen size */
-  max-width: 200px;  /* limits max size on desktop */
+  width: 35vw;
+  max-width: 200px;
   height: 35vw;
   max-height: 200px;
   position: fixed;
@@ -46,7 +109,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3; /* always above text/images */
+  z-index: 3;
 }
 
 /* Images inside square */
@@ -76,50 +139,6 @@ body {
   opacity: 1;
 }
 
-/* Hover effect (desktop only, scale on tap for mobile via JS if needed) */
-.square img:hover {
-  transform: scale(1.05);
-}
-
-/* ------------------ TEXT SECTION ------------------ */
-.text-section {
-  padding: 1em;
-  max-width: 90vw;
-  margin: 0 auto;
-  text-align: center;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 2;
-}
-
-/* ------------------ IMAGE SECTION ------------------ */
-.image-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-  padding: 1em;
-  margin-top: 2em;
-  opacity: 0; /* hidden initially */
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 1;
-}
-
-/* Stagger images */
-.image-section img:nth-child(odd) {
-  transform: translateY(-10px);
-}
-.image-section img:nth-child(even) {
-  transform: translateY(10px);
-}
-.image-section img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-  border-radius: 8px; /* optional, soft corners */
-}
-.image-section img:hover {
-  transform: scale(1.05);
-}
-
 /* ------------------ HIDDEN / SHOW ANIMATIONS ------------------ */
 .hidden {
   opacity: 0;
@@ -129,34 +148,40 @@ body {
   opacity: 1;
   transform: translateX(0);
 }
-/* ------------------ MOBILE-FIRST TEXT ------------------ */
-.text-section {
-  padding: 1em;
-  max-width: 90vw;
-  margin: 0 auto;
-  text-align: center; /* center all text on mobile */
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 2;
-}
 
-/* Headings and paragraphs already inherit text-align from parent */
-h1, p {
-  margin: 0.3em 0;
-}
-
-/* ------------------ MEDIA QUERIES FOR LARGER SCREENS ------------------ */
+/* ------------------ DESKTOP LAYOUT ------------------ */
 @media (min-width: 768px) {
-  h1 { 
-    font-size: 55px; 
-  }
-  p { 
-    font-size: 16px; 
+  /* Container becomes horizontal */
+  .main-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 95%;
+    margin: 0 auto;
   }
 
-  /* Desktop layout: keep text left-aligned */
+  /* Text on left */
   .text-section {
     text-align: left;
     max-width: 45%;
-    margin-left: 5%;
+    margin-bottom: 0;
+  }
+
+  /* Images on right */
+  .image-section {
+    grid-template-columns: repeat(2, 200px);
+    gap: 20px;
+    max-width: 45%;
+    text-align: left;
+  }
+
+  /* Headings and paragraphs fixed size */
+  h1 { font-size: 55px; }
+  p { font-size: 16px; }
+
+  /* Square button size fixed */
+  .square {
+    width: 170px;
+    height: 170px;
   }
 }
