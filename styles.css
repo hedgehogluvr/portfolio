@@ -164,4 +164,8 @@ body {
     width: 150px;
   }
 }
+.square {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
 
