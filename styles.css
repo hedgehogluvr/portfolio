@@ -13,11 +13,16 @@ h2 {
 }
 
 /* Paragraphs */
-p {
+p1 {
   font-family: "Times New Roman";
   text-align: left;
   font-size: 35px; /* you can adjust as needed */
 }  
+p2 {
+  font-family: "Times New Roman";
+  text-align: left;
+  font-size: 25px; /* you can adjust as needed */
+}
 a { 
   color: black;
   text-decoration: none;
@@ -86,14 +91,14 @@ body {
   color: rgb(255, 194, 240);
 }
 
-/* Text Section */
 .text-section {
   position: absolute;
   top: 50px;
-  left: 25%;
-  transform: translateX(-50%);
+  left: 60px;              /* anchor from left edge */
+  max-width: 650px;        /* prevents text from running too wide */
+  width: calc(100% - 120px); /* keeps text inside screen */
   transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 2; /* ensures text stays above images */
+  z-index: 2;
 }
 
 /* Image Section */
