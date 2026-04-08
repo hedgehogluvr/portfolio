@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="script.js"></script>
      <link rel="icon" type="image/png" href="black-hedgehog.png">
     <link rel="stylesheet" href="styles.css" />
     <div class="text-section" id="text">
@@ -21,5 +20,9 @@
       <!-- Image Content -->
       <div class="image-section" id="images">
         <img src="image1.jpg" />
-
+<script>
+document.querySelector('.square').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
+</script>
 </html>
