@@ -3,7 +3,7 @@ h1 {
   text-align: left;
   font-family: "Times New Roman";
   font-style: normal; /* changed from 'regular' to valid value */
-  font-size: 155px;
+  font-size: 100px;
   text-decoration: underline;
 }
 
