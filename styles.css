@@ -12,6 +12,12 @@ p {
   text-align: left;
   font-size: 35px; /* you can adjust as needed */
 }
+work {
+  font-family:"Times New Roman";
+  text-align:left; 
+  left: 20%;
+}
+  
 a { 
   color: black;
   text-decoration: none;
