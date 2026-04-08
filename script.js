@@ -5,10 +5,10 @@ square.addEventListener("click", () => {
   const images = document.getElementById("images");
   const body = document.body;
 
-  // Toggle content visibility
+  // Toggle content
   text.classList.toggle("hidden");
   images.classList.toggle("show");
 
-  // Toggle dark/light mode
+  // Toggle hedgehog / background
   body.classList.toggle("dark-mode");
 });
