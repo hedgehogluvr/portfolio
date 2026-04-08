@@ -122,4 +122,46 @@ body {
   opacity: 1;
   transform: translateX(-50%);
 }
+/* ========================= */
+/* Mobile Responsive Styles  */
+/* ========================= */
+
+@media (max-width: 768px) {
+  /* Make hedgehog square slightly smaller on mobile */
+  .square {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* Center title on mobile */
+  h1 {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  /* Center text section */
+  .text-section {
+    position: relative;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+  }
+
+  /* Center image grid */
+  .image-section {
+    position: relative;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    grid-template-columns: repeat(2, 150px);
+    justify-content: center;
+  }
+
+  /* Resize images for mobile */
+  .image-section img {
+    width: 150px;
+  }
+}
 
