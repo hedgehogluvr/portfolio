@@ -1,28 +1,50 @@
-<html> 
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-     <link rel="icon" type="image/png" href="black-hedgehog.png">
-    <link rel="stylesheet" href="styles.css" />
-    <div class="text-section" id="text">
-    <title>Livia Foldes Invitation Poster</title>
-    <h1> <a href="index.html"> B<i>ack</i> </a></h1>
-    <h2> L<i>ivia</i> F<i>oldes</i> I<i>nvitation</i> P<i>oster</i> </h2>
-    <p1>Using the visual metaphor of censorship, I created an engaging poster design for a visiting artist lecturer, Livia Foldes. Foldes’ most profound work was her MFA thesis entitled “Sex Workers Built the Internet.” Through her research and inquiry, she attempts to amplify the experiences of sex workers, dismantling stigmatized perceptions of sex work, noting that the community has been dehumanized, sanitized, and erased from a platform they built: the internet. </p1>
- <div class="square">
-    <img src="black-hedgehog.png" class="img-black" />
-    <img src="pink-hedgehog.png" class="img-pink" />
-  </div>
-       <!-- Black Square Button -->
-      <div class="square" onclick="switchContent()"></div>
-      <!-- Image Content -->
-      <div class="image-section" id="images">
-        <img src="image1.jpg" />
-<script>
-document.querySelector('.square').addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});
-</script>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+<title>Livia Foldes Invitation Poster</title>
+
+<link rel="icon" type="image/png" href="black-hedgehog.png">
+<link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+
+<!-- Text Content -->
+<div class="text-section" id="text">
+  <h1><a href="index.html">B<i>ack</i></a></h1>
+
+  <h2>L<i>ivia</i> F<i>oldes</i> I<i>nvitation</i> P<i>oster</i></h2>
+
+  <p>
+  Using the visual metaphor of censorship, I created an engaging poster design 
+  for a visiting artist lecturer, Livia Foldes. Foldes’ most profound work was 
+  her MFA thesis entitled “Sex Workers Built the Internet.” Through her research 
+  and inquiry, she attempts to amplify the experiences of sex workers, dismantling 
+  stigmatized perceptions of sex work, noting that the community has been 
+  dehumanized, sanitized, and erased from a platform they built: the internet.
+  </p>
+</div>
+
+
+<!-- Square Toggle -->
+<div class="square" onclick="switchContent()">
+  <img src="black-hedgehog.png" class="img-black" />
+  <img src="pink-hedgehog.png" class="img-pink" />
+</div>
+
+
+<!-- Image Content -->
+<div class="image-section" id="images">
+  <img src="image1.jpg" />
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
 </html>
