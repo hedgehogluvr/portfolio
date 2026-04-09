@@ -84,7 +84,7 @@ body {
   position: absolute;
   top: 50px;
   left: 60px;              /* anchor from left edge */
-  max-width: 650px;        /* prevents text from running too wide */
+  max-width: 640px;        /* prevents text from running too wide */
   width: calc(100% - 120px); /* keeps text inside screen */
   transition: opacity 0.6s ease, transform 0.6s ease;
   z-index: 2;
