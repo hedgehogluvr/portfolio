@@ -1,129 +1,166 @@
-h 
-{ text-align: left; 
- font-family: "Times New Roman"; 
- font-style: normal; /* changed from 'regular' to valid value */ 
- font-size: 80px; } /* Paragraphs */ 
-p 
-{ font-family: "Times New Roman"; 
- text-align: left; 
- font-size: 35px; /* you can adjust as needed */ 
-} 
-a 
-{ color: black;
- text-decoration: none; 
-} 
-a:hover 
-{ text-decoration:underline; } /* Center Square */ 
+/* Headings */
+h1 {
+  text-align: left;
+  font-family: "Times New Roman";
+  font-style: normal; /* changed from 'regular' to valid value */
+  font-size: 55px;
+  text-decoration: underline;
+}
 
-.square 
-{ width: 170px; 
- height: 170px; 
- position: fixed;
- top: 50%;
- left: 50%; 
- transform: translate(-50%, -50%);
- cursor: pointer; overflow: hidden; /* keep images inside */ 
-} 
-/* Images inside square */ 
+/* Paragraphs */
+p {
+  font-family: "Times New Roman";
+  font-size: 16px; /* you can adjust as needed */
+}
 
-.square img 
-{ width: 100%; 
- height: 100%; 
- position: absolute; 
- top: 0; 
- left: 0; 
- object-fit: contain; 
- transition: opacity 0.6s ease, transform 0.3s ease;
-} 
-/* Default: show black, hide pink */ 
+/* Center Square */
+.square {
+  width: 170px;
+  height: 170px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  overflow: hidden; /* keep images inside */
+}
 
-.square .img-black 
-{ opacity: 1; } 
-.square .img-pink 
-{ opacity: 0; } 
+/* Images inside square */
+.square img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  transition: opacity 0.6s ease, transform 0.3s ease;
+}
 
-/* Dark mode: show pink, hide black */ 
-.dark-mode .square .img-black { opacity: 0; } 
-.dark-mode .square .img-pink { opacity: 1; } 
-/* Hover effect */ 
-.square img:hover { transform: scale(1.05); }
+/* Default: show black, hide pink */
+.square .img-black {
+  opacity: 1;
+}
+.square .img-pink {
+  opacity: 0;
+}
 
-/* Body */ 
+/* Dark mode: show pink, hide black */
+.dark-mode .square .img-black {
+  opacity: 0;
+}
+.dark-mode .square .img-pink {
+  opacity: 1;
+}
+
+/* Hover effect */
+.square img:hover {
+  transform: scale(1.05);
+}
+
+/* Body */
 body {
-  margin: 0; 
-  font-family: Arial, sans-serif; 
+  margin: 0;
+  font-family: Arial, sans-serif;
   background: rgb(255, 194, 240);
   color: black;
   transition: background 0.6s ease, color 0.6s ease;
-  overflow-x: hidden; /* prevent horizontal scroll */ }
-
-/* Dark Mode */ 
-.dark-mode 
-{ background: black;
- color: rgb(255, 194, 240); } 
-
-.text-section { 
-  position: absolute;
-  top: 50px; 
-  left: 60px; /* anchor from left edge */
-  max-width: 640px; /* prevents text from running too wide */ 
-  width: calc(100% - 120px); /* keeps text inside screen */ 
-  transition: opacity 0.6s ease, transform 0.6s ease; 
-  z-index: 2; } 
-/* Image Section */ 
-.image-section { 
-  position: absolute; 
-  top: 50px; 
-  left: 75%; 
-  transform: translateX(-50%); 
-  display: grid; 
-  grid-template-columns: repeat(2, 200px); 
-  gap: 20px; opacity: 0; /* hidden initially */ 
-  transition: opacity 0.6s ease, transform 0.6s ease; 
-  z-index: 1; /* behind text */ 
-  overflow: visible; /* prevent clipping */ }
-
-/* Stagger images */ 
-.image-section img:nth-child(odd) 
-{ transform: translateY(-20px); } 
-
-.image-section img:nth-child(even) { transform: translateY(20px); } 
-.image-section img { 
-  width: 200px; 
-  transition: transform 0.3s ease; 
+  overflow-x: hidden; /* prevent horizontal scroll */
 }
-.image-section img:hover 
-{ transform: scale(1.05); } 
-/* Hidden / Show Animations */ 
-.hidden { 
-  opacity: 0; 
-  transform: translateX(-70%); } 
-.show {
-  opacity: 1; 
+
+/* Dark Mode */
+.dark-mode {
+  background: black;
+  color: rgb(255, 194, 240);
+}
+
+/* Text Section */
+.text-section {
+  position: absolute;
+  top: 50px;
+  left: 25%;
   transform: translateX(-50%);
-} 
-/* ========================= */ /* Mobile Responsive Styles */ /* ========================= */
-@media (max-width: 768px) 
-{ /* Make hedgehog square slightly smaller on mobile */
-  .square { 
-    width: 140px; 
-    height: 140px; } /* Center title on mobile */ 
-  h1 { text-align: center; 
-      font-size: 40px; } /* Center text section */ 
-  .text-section { 
-    position: relative; 
-    top: 80px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    text-align: center; width: 90%; } /* Center image grid */ 
-  .image-section { 
-    position: relative; 
-    top: 120px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    grid-template-columns: repeat(2, 150px); 
-    justify-content: center; } /* Resize images for mobile */ 
-  .image-section img { width: 150px; } } 
-.square {
-  touch-action: manipulation; 
-  -webkit-tap-highlight-color: transparent; }
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 2; /* ensures text stays above images */
+}
+
+/* Image Section */
+.image-section {
+  position: absolute;
+  top: 50px;
+  left: 75%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 20px;
+  opacity: 0; /* hidden initially */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 1; /* behind text */
+  overflow: visible; /* prevent clipping */
+}
+
+/* Stagger images */
+.image-section img:nth-child(odd) {
+  transform: translateY(-20px);
+}
+.image-section img:nth-child(even) {
+  transform: translateY(20px);
+}
+.image-section img {
+  width: 200px;
+  transition: transform 0.3s ease;
+}
+.image-section img:hover {
+  transform: scale(1.05);
+}
+
+/* Hidden / Show Animations */
+.hidden {
+  opacity: 0;
+  transform: translateX(-70%);
+}
+.show {
+  opacity: 1;
+  transform: translateX(-50%);
+}
+/* ========================= */
+/* Mobile Responsive Styles  */
+/* ========================= */
+
+@media (max-width: 768px) {
+  /* Make hedgehog square slightly smaller on mobile */
+  .square {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* Center title on mobile */
+  h1 {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  /* Center text section */
+  .text-section {
+    position: relative;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+  }
+
+  /* Center image grid */
+  .image-section {
+    position: relative;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    grid-template-columns: repeat(2, 150px);
+    justify-content: center;
+  }
+
+  /* Resize images for mobile */
+  .image-section img {
+    width: 150px;
+  }
+}
