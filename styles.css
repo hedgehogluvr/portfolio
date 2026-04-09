@@ -104,7 +104,35 @@ body {
   z-index: 1; /* behind text */
   overflow: visible; /* prevent clipping */
 }
+/* ========================= */
+/* Project Page Image Section */
+/* ========================= */
 
+.project-image-section {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1000px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.project-image-section img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.project-image-section img:hover {
+  transform: scale(1.02);
+}
 /* Stagger images */
 .image-section img:nth-child(odd) {
   transform: translateY(-20px);
