@@ -203,4 +203,9 @@ body {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-
+.project-image-section {
+  width: 90%;
+}
+.project-image-section img {
+  width: 100%;
+}
