@@ -2,13 +2,14 @@ const square = document.querySelector(".square");
 
 square.addEventListener("click", () => {
   const text = document.getElementById("text");
-  const images = document.getElementById("images");
+  const images = document.querySelector(".image-section, .project-image-section");
   const body = document.body;
 
-  // Toggle content
-  text.classList.toggle("hidden");
-  images.classList.toggle("show");
+  if (text) text.classList.toggle("hidden");
+  if (images) {
+    images.classList.toggle("show");
+    images.classList.toggle("hidden");
+  }
 
-  // Toggle hedgehog / background
   body.classList.toggle("dark-mode");
 });
