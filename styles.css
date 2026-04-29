@@ -149,7 +149,7 @@ body {
 
 /* Ensure the actual images inside fill that new large space */
 .hero-image-container img {
-  width: 100%;
+  width: 50%;
   height: auto;
   object-fit: contain;
 }
