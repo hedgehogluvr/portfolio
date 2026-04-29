@@ -129,6 +129,30 @@ body {
 .show {
   opacity: 1;
   transform: translateX(-50%);
+  
+.hero-image-container {
+  position: absolute;
+  top: 50px;
+  left: 70%; /* Adjusted slightly to give more room for the width */
+  transform: translateX(-50%);
+  display: grid;
+  
+  /* CHANGE: Increased from 200px to 500px or 600px */
+  grid-template-columns: repeat(2, 500px); 
+  
+  gap: 30px;
+  opacity: 0; 
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 1; 
+  overflow: visible; 
+}
+
+/* Ensure the actual images inside fill that new large space */
+.hero-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 }
 /* ========================= */
 /* Mobile Responsive Styles  */
